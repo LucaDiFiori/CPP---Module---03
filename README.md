@@ -23,7 +23,7 @@ This module is designed to help you understand Inheritance in CPP.
 	- [Hybrid Inheritance](#hybrid-inheritance)
 - [CONSTRUCTORS AND DESTRUCTORS IN INHERITANCE](#constructors-and-destructors-in-inheritance)
 	- [Example with Parameterized Constructors](#example-with-parameterized-constructors)
-- [OVERRIDING MEMBER FUNCTIONS: VIRTUAL](#overriding-member-functions:-virtual)
+- [OVERRIDING MEMBER FUNCTIONS: VIRTUAL](#overriding-member-functions-virtual)
 	- [Key Points of Function Overriding](#key-points-of-function-overriding)
 	- [Why Use virtual and Pointers?](#why-use-virtual-and-pointers)
 - [ACCESSING BASE CLASS MEMBERS](#accessing-base-class-members)
