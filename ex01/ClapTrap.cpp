@@ -24,7 +24,12 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
 	std::cout << "-ClapTrap- " << this->_name << " created" << std::endl;
 }
 
-//Assignment operator
+ClapTrap::ClapTrap(const ClapTrap& src)
+{
+	*this = src;
+	std::cout << "-ClapTrap- " << this->_name << " created as a copy of " << src.getName() << std::endl;
+}
+
 ClapTrap& ClapTrap::operator=(const ClapTrap& src)
 {
 	this->_name = src.getName();
@@ -34,20 +39,9 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& src)
 	return (*this);
 }
 
-/*
-* Note:
-* in '*this = src;' i'm using the assignment operator
-*/
-ClapTrap::ClapTrap(const ClapTrap& src)
-{
-	*this = src;
-	std::cout << "-ClapTrap- " << this->_name << " created as a copy of " << src.getName() << std::endl;
-}
-
-
 ClapTrap::~ClapTrap()
 {
-	std::cout << "-ClapTrap- " << this->_name << " destroyed" << std::endl;
+	std::cout << "-ClapTrap- " << this->_name << " destroyed." << std::endl;
 }
 
 
