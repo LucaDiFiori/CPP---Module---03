@@ -24,6 +24,7 @@ This module is designed to help you understand Inheritance in CPP.
 - [CONSTRUCTORS AND DESTRUCTORS IN INHERITANCE](#constructors-and-destructors-in-inheritance)
 	- [Example with Parameterized Constructors](#example-with-parameterized-constructors)
 - [OVERRIDING MEMBER FUNCTIONS: VIRTUAL](#overriding-member-functions-virtual)
+    - https://www.youtube.com/watch?v=4NPOIaUxnnk&ab_channel=ProfessorHankStalica
 	- [Key Points of Function Overriding](#key-points-of-function-overriding)
 	- [Why Use virtual and Pointers?](#why-use-virtual-and-pointers)
 - [ACCESSING BASE CLASS MEMBERS](#accessing-base-class-members)
@@ -409,6 +410,8 @@ Derived(int x, int y) : Base(x) {
 ***
 
 ## OVERRIDING MEMBER FUNCTIONS: VIRTUAL
+Watch this video first!: https://www.youtube.com/watch?v=4NPOIaUxnnk&ab_channel=ProfessorHankStalica
+
 Overriding occurs when a derived class provides a new implementation of a function that is already defined in its base class. This allows the derived class to have its own version of the function, which is called instead of the base class version, when appropriate.
 
 ## Key Points of Function Overriding:
@@ -628,7 +631,12 @@ int main() {
 ```
 Now, when B and C inherit from A using virtual inheritance, D will have only one instance of A, shared between B and C. This eliminates the ambiguity and avoids the duplication of A.
 
-When D calls show(), there is no ambiguity, and the program knows to call A::show() because only one instance of A exists in D
+When D calls show(), there is no ambiguity, and the program knows to call A::show() because only one instance of A exists in D 
+
+### Note:
+- **Base Class Constructor using virtual**: When an object of the derived class (e.g. D) is created, the base class constructor (A) is called only once, regardless of how many inheritance paths lead to it. This simplifies the management of the base class state.
+- Virtual inheritance must be applied to derived classes (B,C) that directly inherit from the common base class (A) to resolve the "diamond problem." 
+It is not necessary to declare virtual inheritance in the class that inherits from these derived classes (D) because the virtual inheritance has already been resolved upstream.
 
 ***
 
