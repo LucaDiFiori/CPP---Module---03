@@ -51,7 +51,7 @@ FragTrap& FragTrap::operator=(const FragTrap& src)
 //destructor____________________________________________________________________
 FragTrap::~FragTrap()
 {
-	std::cout << PURPLE << "FragTrap " << this->_name << " destroyed." << RESET << std::endl;	
+	std::cout << PURPLE << "-FragTrap- " << this->_name << " destroyed." << RESET << std::endl;	
 }
 
 
@@ -59,7 +59,7 @@ FragTrap::~FragTrap()
 void FragTrap::highFivesGuys(void)
 {
 	if (this->_hitPoints <= 0)
-		std::cout << PURPLE << "FragTrap " << this->_name << " is dead, can't high five" << RESET << std::endl;
+		std::cout << PURPLE << this->_name << " is dead, can't high five" << RESET << std::endl;
 	else
-		std::cout << PURPLE << "FragTrap " << this->_name <<  " :HIGH FIVE!" << RESET << std::endl;
+		std::cout << PURPLE << "-FragTrap- " << this->_name <<  " :HIGH FIVE!" << RESET << std::endl;
 }

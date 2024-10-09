@@ -30,18 +30,21 @@ DiamondTrap::DiamondTrap() : ClapTrap("Default _clap_name"), ScavTrap(), FragTra
 	this->_energyPoints = this->ScavTrap::_energyPoints;
 	this->_attackDamage = this->FragTrap::_attackDamage;
 
-	std::cout << RED << "-DiamondTrap- " << this->_name << " created" << RESET << std::endl;
+	std::cout << RED << "-DiamondTrap- " << this->_name << " created" 
+		<< RESET << std::endl;
 }
 
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), 
+	ScavTrap(name), FragTrap(name)
 {
 	this->_name = name;
 	this->_hitPoints = this->FragTrap::_hitPoints;
 	this->_energyPoints = this->ScavTrap::_energyPoints;
 	this->_attackDamage = this->FragTrap::_attackDamage;
 
-	std::cout << RED << "-DiamondTrap- " << this->_name << " created" << RESET << std::endl;
+	std::cout << RED << "-DiamondTrap- " << this->_name << " created" 
+		<< RESET << std::endl;
 }
 
 /* DiamondTrap Copy Constructor
@@ -60,10 +63,20 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 * indicating that the DiamondTrap object has been created as a copy of the source object.
 * The message includes the name of the original object using the getName() method,
 * formatted with a color for clarity.
+*
+* NOTE: Explicit Initialization of _name (DiamondTrap::DiamondTrap(const DiamondTrap& src) : ...  _name(src.getName()))
+* --------------------------------
+* The _name attribute is specific to the DiamondTrap class and is not managed by the copy constructors 
+* of the base classes (ClapTrap, ScavTrap, and FragTrap). Therefore, it must be explicitly initialized 
+* in the DiamondTrap copy constructor to ensure that the new DiamondTrap object has the correct name 
+* copied from the source object (src).
 */
-DiamondTrap::DiamondTrap(const DiamondTrap& src) : ClapTrap(src), ScavTrap(src), FragTrap(src)
+DiamondTrap::DiamondTrap(const DiamondTrap& src) : ClapTrap(src), 
+	ScavTrap(src), FragTrap(src), _name(src._name)
 {
-	std::cout << RED << "-DiamondTrap- " << this->_name << " created as a copy of " << RESET << src.getName() << std::endl;
+	std::cout << RED << "-DiamondTrap- " << this->_name << " created as a copy of " 
+		<< RESET << src.getName() << std::endl;
+	
 }
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& src)
@@ -78,12 +91,14 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& src)
 
 DiamondTrap::~DiamondTrap()
 {
-	std::cout << RED << "-DiamondTrap- " << this->_name << " destroyed." << RESET << std::endl;
+	std::cout << RED << "-DiamondTrap- " << this->_name << " destroyed." 
+		<< RESET << std::endl;
 }
 
 
-	//Member functions
+//Member functions
 void DiamondTrap::whoAmI(void)
 {
-	std::cout << RED << "I am " << this->_name << " and my ClapTrap name is " << ClapTrap::getName() << RESET << std::endl;
+	std::cout << RED << "I am " << this->_name << " and my ClapTrap name is " 
+		<< ClapTrap::getName() << RESET << std::endl;
 }

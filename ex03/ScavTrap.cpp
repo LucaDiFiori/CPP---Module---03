@@ -69,7 +69,7 @@ Base class destructor is called next, automatically, once the derived class
 has been destructed.*/
 ScavTrap::~ScavTrap()
 {
-	std::cout << CYAN << "ScavTrap " << this->_name << " destroyed." << RESET << std::endl;
+	std::cout << CYAN << "-ScavTrap- " << this->_name << " destroyed." << RESET << std::endl;
 }
 
 //Override method_______________________________________________________________
@@ -95,5 +95,5 @@ void ScavTrap::attack(const std::string& target)
 //method________________________________________________________________________
 void ScavTrap::guardGate()
 {
-	std::cout << CYAN << "ScavTrap " << this->_name << " is in Gate keeper mode." << RESET << std::endl;
+	std::cout << CYAN << "-ScavTrap- " << this->_name << " is in Gate keeper mode." << RESET << std::endl;
 }
