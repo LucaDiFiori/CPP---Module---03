@@ -15,7 +15,7 @@
 int main() 
 {
     // Create a ScavTrap object
-    ScavTrap scavtrap("SCVT");
+    ScavTrap scavtrap("SCAVY");
     scavtrap.attack("Target3");
     scavtrap.takeDamage(5);
     scavtrap.beRepaired(5);

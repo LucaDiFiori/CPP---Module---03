@@ -13,44 +13,25 @@
 # ifndef FRAGTRAP_HPP
 #define FRAGTRAP_HPP
 
-# ifndef COLORS
-#  define GREEN "\033[1;32m"
-#  define RED "\033[1;31m"
-#  define CYAN "\033[1;36m"
-#  define PURPLE "\033[1;35m"
-#  define RESET "\033[0m"
-# endif
-
 #include "ClapTrap.hpp"
+
 /*
- * NOTE: Virtual Inheritance:
- * --------------------------
- * Using virtual inheritance (virtual public) prevents the "diamond problem."
- * This issue occurs when a class derives from two base classes that in turn 
- * derive from the same base class (in this case, ClapTrap).
- * With virtual inheritance, DiamondTrap will have a single instance of ClapTrap, 
- * avoiding ambiguity in accessing ClapTrap's attributes and methods.
+ * The FragTrap class is derived from ClapTrap, and it inherits all the 
+ * attributes such as _name, _hitPoints, _energyPoints, and _attackDamage 
+ * from the base class ClapTrap. These attributes are not redefined here 
+ * because they are already declared and managed by ClapTrap.
  *
- * Access to Attributes:
- * Without virtual inheritance, there would be two instances of ClapTrap 
- * (one for ScavTrap and one for FragTrap), which could lead to confusion and 
- * conflicts when accessing members of the base class.
- * 
- * Why do we need to use 'virtual' for FragTrap and ScavTrap but not for ClapTrap?
- * -----------------------------------------------------------------------------
- * Virtual inheritance must be applied to derived classes (like FragTrap and ScavTrap) 
- * and not to the base class (ClapTrap).
- * This is because virtual inheritance is a directive that tells the compiler to 
- * create a single instance of the base class when inherited through multiple paths.
- * 
- * Explanation:
- * Base Class (ClapTrap): Does not need to be declared as virtual because it does 
- * not inherit from any other class. It is the class that is virtually inherited 
- * by its derived classes.
- * Derived Classes (FragTrap and ScavTrap): Must virtually inherit from ClapTrap 
- * to ensure that there is only a single instance of ClapTrap when a class like 
- * DiamondTrap inherits from both.
- * */
+ * The highFivesGuys() method is unique to FragTrap and adds an additional 
+ * functionality exclusive to this derived class, which is not part of the 
+ * ClapTrap functionality. It introduces the concept of "High fives" as a 
+ * special behavior for FragTrap.
+ *
+ * Constructors and destructors are explicitly defined in FragTrap to ensure 
+ * that proper constructor/destructor chaining occurs, starting with ClapTrap 
+ * and then FragTrap during construction, and in reverse order during 
+ * destruction. The copy constructor and assignment operator are also 
+ * defined to ensure proper copying and assignment of FragTrap objects.
+ */
 class FragTrap : virtual public ClapTrap
 {
 	public:

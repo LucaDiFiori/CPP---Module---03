@@ -19,7 +19,8 @@ FragTrap::FragTrap() : ClapTrap()
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
 
-	std::cout << "FragTrap " << this->_name << " created." << std::endl;
+	std::cout << PURPLE << "-FragTrap- " << this->_name << " created." 
+		<< RESET << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
@@ -28,13 +29,13 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
 
-	std::cout << "FragTrap " << this->_name << " created." << std::endl;
+	std::cout << PURPLE << "-FragTrap- " << this->_name << " created." << RESET << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap& src) : ClapTrap(src) 
 {
-	std::cout << "FragTrap " << this->_name << " created as a copy of " 
-		<< src.getName() << std::endl;
+	std::cout << PURPLE << "-FragTrap- " << this->_name << " created as a copy of " 
+		<< src.getName() << RESET << std::endl;
 }
 
 //assignment operator___________________________________________________________
@@ -51,7 +52,7 @@ FragTrap& FragTrap::operator=(const FragTrap& src)
 //destructor____________________________________________________________________
 FragTrap::~FragTrap()
 {
-	std::cout << "FragTrap " << this->_name << " destroyed." << std::endl;	
+	std::cout << PURPLE << "-FragTrap- " << this->_name << " destroyed." << RESET << std::endl;	
 }
 
 
@@ -59,7 +60,7 @@ FragTrap::~FragTrap()
 void FragTrap::highFivesGuys(void)
 {
 	if (this->_hitPoints <= 0)
-		std::cout << "FragTrap " << this->_name << " is dead, can't high five" << std::endl;
+		std::cout << PURPLE << "-FragTrap- " << this->_name << " is dead, can't high five" << RESET << std::endl;
 	else
-		std::cout << "FragTrap " << this->_name <<  " :HIGH FIVE!" << std::endl;
+		std::cout << PURPLE << "-FragTrap- " << this->_name <<  ": ''HIGH FIVE!''" << RESET << std::endl;
 }

@@ -13,45 +13,30 @@
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
-# ifndef COLORS
-#  define GREEN "\033[1;32m"
-#  define RED "\033[1;31m"
-#  define CYAN "\033[1;36m"
-#  define PURPLE "\033[1;35m"
-#  define RESET "\033[0m"
-# endif
-
 #include "ClapTrap.hpp"
 
 /*
- * NOTE: Virtual Inheritance:
- * --------------------------
- * Using virtual inheritance (virtual public) prevents the "diamond problem."
- * This issue occurs when a class derives from two base classes that in turn 
- * derive from the same base class (in this case, ClapTrap).
- * With virtual inheritance, DiamondTrap will have a single instance of ClapTrap, 
- * avoiding ambiguity in accessing ClapTrap's attributes and methods.
+ * The ScavTrap class is derived from ClapTrap, and it inherits all the 
+ * attributes such as _name, _hitPoints, _energyPoints, and _attackDamage 
+ * from the base class ClapTrap. These attributes are not redefined here 
+ * because they are already declared and managed by ClapTrap.
  *
- * Access to Attributes:
- * Without virtual inheritance, there would be two instances of ClapTrap 
- * (one for ScavTrap and one for FragTrap), which could lead to confusion and 
- * conflicts when accessing members of the base class.
- * 
- * Why do we need to use 'virtual' for FragTrap and ScavTrap but not for ClapTrap?
- * -----------------------------------------------------------------------------
- * Virtual inheritance must be applied to derived classes (like FragTrap and ScavTrap) 
- * and not to the base class (ClapTrap).
- * This is because virtual inheritance is a directive that tells the compiler to 
- * create a single instance of the base class when inherited through multiple paths.
- * 
- * Explanation:
- * Base Class (ClapTrap): Does not need to be declared as virtual because it does 
- * not inherit from any other class. It is the class that is virtually inherited 
- * by its derived classes.
- * Derived Classes (FragTrap and ScavTrap): Must virtually inherit from ClapTrap 
- * to ensure that there is only a single instance of ClapTrap when a class like 
- * DiamondTrap inherits from both.
- * */
+ * The attack() method is overridden in ScavTrap to provide specific behavior
+ * for ScavTrap objects, while still making use of the inherited attributes 
+ * like _attackDamage. By overriding the function, ScavTrap can have its own 
+ * attack logic or output different messages compared to the ClapTrap class.
+ *
+ * The guardGate() method is unique to ScavTrap and adds an additional 
+ * functionality exclusive to this derived class, which is not part of the 
+ * ClapTrap functionality. It introduces the concept of "Gate keeper mode" 
+ * as a special behavior for ScavTrap.
+ *
+ * Constructors and destructors are explicitly defined in ScavTrap to ensure 
+ * that proper constructor/destructor chaining occurs, starting with ClapTrap 
+ * and then ScavTrap during construction, and in reverse order during 
+ * destruction. The copy constructor and assignment operator are also 
+ * defined to ensure proper copying and assignment of ScavTrap objects.
+ */
 class ScavTrap : virtual public ClapTrap
 {
 	public:

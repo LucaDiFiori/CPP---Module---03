@@ -33,7 +33,8 @@ ScavTrap::ScavTrap() : ClapTrap()
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
 
-	std::cout << "ScavTrap " << this->_name << " created." << std::endl;
+	std::cout << CYAN << "-ScavTrap- " << this->_name << " created." 
+		<< RESET << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
@@ -42,13 +43,14 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
 
-	std::cout << "ScavTrap " << this->_name << " created." << std::endl;
+	std::cout << CYAN << "-ScavTrap- " << this->_name << " created." 
+		<< RESET <<  std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& src) : ClapTrap(src)
 {
-	std::cout << "ScavTrap " << this->_name << " created as a copy of " 
-		<< src.getName() << std::endl;
+	std::cout << CYAN << "-ScavTrap- " << this->_name << " created as a copy of " 
+		<< src.getName() << RESET <<  std::endl;
 }
 
 //assignment operator___________________________________________________________
@@ -69,7 +71,7 @@ Base class destructor is called next, automatically, once the derived class
 has been destructed.*/
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap " << this->_name << " destroyed." << std::endl;
+	std::cout << CYAN << "-ScavTrap- " << this->_name << " destroyed." << RESET <<  std::endl;
 }
 
 //Override method_______________________________________________________________
@@ -77,21 +79,25 @@ void ScavTrap::attack(const std::string& target)
 {
     if (this->_hitPoints < 1) 
 	{
-        std::cout << "ScavTrap " << this->_name << " is dead and can't attack!" << std::endl;
+        std::cout << CYAN << "-ScavTrap- " << this->_name << " is dead and can't attack!" 
+			<< RESET << std::endl;
         return;
     }
     if (this->_energyPoints < 1) 
 	{
-        std::cout << "ScavTrap " << this->_name << " is out of energy and can't attack!" << std::endl;
+        std::cout << CYAN << "-ScavTrap- " << this->_name << " is out of energy and can't attack!" 
+			<< RESET << std::endl;
         return;
     }
 
     this->_energyPoints -= 1;
-    std::cout << "ScavTrap " << this->_name << " attacks " << target
-              << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+    std::cout << CYAN << "-ScavTrap- " << this->_name << " attacks " << target
+              << ", causing " << this->_attackDamage << " points of damage!" 
+			<< RESET << std::endl;
 }
 
 void ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap " << this->_name << " is in Gate keeper mode." << std::endl;
+	std::cout << CYAN << "-ScavTrap- " << this->_name << " is in Gate keeper mode." 
+		<< RESET << std::endl;
 }

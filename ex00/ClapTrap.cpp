@@ -14,14 +14,16 @@
 
 
 //Canonical form________________________________________________________________
-ClapTrap::ClapTrap() : _name("Default"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+ClapTrap::ClapTrap() : _name("Default"), _hitPoints(10), 
+	_energyPoints(10), _attackDamage(0)
 {
-	std::cout << "-ClapTrap- " << this->_name << " created" << std::endl;
+	std::cout << GREEN << "-ClapTrap- " << this->_name << " created" << RESET << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), 
+	_energyPoints(10), _attackDamage(0)
 {
-	std::cout << "-ClapTrap- " << this->_name << " created" << std::endl;
+	std::cout << GREEN << "-ClapTrap- " << this->_name << " created" << RESET << std::endl;
 }
 
 //Assignment operator
@@ -41,13 +43,13 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& src)
 ClapTrap::ClapTrap(const ClapTrap& src)
 {
 	*this = src;
-	std::cout << "-ClapTrap- " << this->_name << " created as a copy of " << src.getName() << std::endl;
+	std::cout << GREEN << "-ClapTrap- " << this->_name << " created as a copy of " << RESET << src.getName() << std::endl;
 }
 
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "-ClapTrap- " << this->_name << " destroyed" << std::endl;
+	std::cout << GREEN << "-ClapTrap- " << this->_name << " destroyed" << RESET << std::endl;
 }
 
 
@@ -78,36 +80,38 @@ void ClapTrap::attack(const std::string& target)
 {
     if (this->_hitPoints < 1) 
 	{
-        std::cout << "-ClapTrap- " << this->_name << " is dead and can't attack!" << std::endl;
+        std::cout << GREEN << "-ClapTrap- " << this->_name << " is dead and can't attack!" << RESET << std::endl;
         return;
     }
     if (this->_energyPoints < 1) 
 	{
-        std::cout << "-ClapTrap- " << this->_name << " is out of energy and can't attack!" << std::endl;
+        std::cout << GREEN << "-ClapTrap- " << this->_name << " is out of energy and can't attack!" << RESET << std::endl;
         return;
     }
 
     this->_energyPoints -= 1;
-    std::cout << "-ClapTrap- " << this->_name << " attacks " << target
-              << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+    std::cout << GREEN << "-ClapTrap- " << this->_name << " attacks " << target
+              << ", causing " << this->_attackDamage << " points of damage!" << RESET << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_hitPoints < 1)
 	{
-		std::cout << "-ClapTrap- " << this->_name << " is already dead!" << std::endl;
+		std::cout << GREEN << "-ClapTrap- " << this->_name << " is already dead!" << RESET << std::endl;
 		return;
 	}
 	if (amount >= static_cast<unsigned int>(this->_hitPoints))
 	{
 		this->_hitPoints = 0;
-		std::cout << "-ClapTrap- " << this->_name << " took " << amount << " points of damage and died!" << std::endl;
+		std::cout << GREEN << "-ClapTrap- " << this->_name << " took " << amount 
+			<< " points of damage and died!" << RESET << std::endl;
 	}
 	else
 	{
 		this->_hitPoints -= amount;
-		std::cout << "-ClapTrap- " << this->_name << " took " << amount << " points of damage!" << std::endl;
+		std::cout << GREEN << "-ClapTrap- " << this->_name << " took " << amount 
+			<< " points of damage!" << RESET << std::endl;
 	}
 }
 
@@ -115,22 +119,25 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_hitPoints < 1)
 	{
-		std::cout << "-ClapTrap- " << this->_name << " is dead and can't be repaired!" << std::endl;
-		return;
-	}
-	if (this->_hitPoints >= 10)
-	{
-		std::cout << "-ClapTrap- " << this->_name << " is already at full health!" << std::endl;
+		std::cout << GREEN << "-ClapTrap- " << this->_name << " is dead and can't be repaired!" 
+			<< RESET << std::endl;
 		return;
 	}
 	if (this->_energyPoints < 1) 
 	{
-        std::cout << "-ClapTrap- " << this->_name << " is out of energy and can't attack!" << std::endl;
+        std::cout << GREEN << "-ClapTrap- " << this->_name << " is out of energy and can't auto repair!" 
+			<< RESET << std::endl;
         return;
     }
+	if (this->_hitPoints >= 10)
+	{
+		std::cout << GREEN << "-ClapTrap- " << this->_name << " is already at full health!" 
+			<< RESET << std::endl;
+		return;
+	}
 	this->_hitPoints += amount;
 	this->_energyPoints -= 1;
-	std::cout << "-ClapTrap- " << this->_name << " repairs itself by " 
+	std::cout << GREEN << "-ClapTrap- " << this->_name << " repairs itself by " 
               << amount << " hit points! Current hit points: " 
-              << this->_hitPoints << std::endl;
+              << this->_hitPoints << RESET << std::endl;
 }

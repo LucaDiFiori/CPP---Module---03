@@ -19,7 +19,8 @@ FragTrap::FragTrap() : ClapTrap()
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
 
-	std::cout << PURPLE << "-FragTrap- " << this->_name << " created." << RESET << std::endl;
+	std::cout << PURPLE << "-FragTrap- " << this->_name << " created." 
+		<< RESET << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
@@ -59,7 +60,7 @@ FragTrap::~FragTrap()
 void FragTrap::highFivesGuys(void)
 {
 	if (this->_hitPoints <= 0)
-		std::cout << PURPLE << this->_name << " is dead, can't high five" << RESET << std::endl;
+		std::cout << PURPLE << "-FragTrap- " << this->_name << " is dead, can't high five" << RESET << std::endl;
 	else
-		std::cout << PURPLE << "-FragTrap- " << this->_name <<  " :HIGH FIVE!" << RESET << std::endl;
+		std::cout << PURPLE << "-FragTrap- " << this->_name <<  ": ''HIGH FIVE!''" << RESET << std::endl;
 }
